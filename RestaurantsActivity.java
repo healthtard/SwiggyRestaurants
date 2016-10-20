@@ -77,7 +77,7 @@ public class RestaurantsActivity extends AppCompatActivity implements SwipeRefre
         });
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mSwipeRefreshLayout.setRefreshing(false);
+        mSwipeRefreshLayout.setRefreshing(true);
 
         if (savedInstanceState == null) {
             mSwipeRefreshLayout.setRefreshing(true);
@@ -117,9 +117,9 @@ public class RestaurantsActivity extends AppCompatActivity implements SwipeRefre
                             if (object.has("chain")) {
                                 JSONArray chain = object.getJSONArray("chain");
                                 ArrayList<RestaurentChain> restaurentChainList = new ArrayList<RestaurentChain>();
-                                RestaurentChain restaurentChain = new RestaurentChain();
                                 for (int j = 0; j < chain.length(); j++) {
                                     JSONObject sub_object = chain.getJSONObject(j);
+                                    RestaurentChain restaurentChain = new RestaurentChain();
                                     restaurentChain.setName(sub_object.getString("name"));
                                     restaurentChain.setArea(sub_object.getString("area"));
                                     restaurentChain.setCity(sub_object.getString("city"));
